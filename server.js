@@ -50,12 +50,14 @@ app.post('/api/sendName', (req, res) => {
     console.log('Request to add name: ');
     console.log(req.body);
 
-    if(!req.body.includes(",")){
+    var tempString = req.body.nameString;
+
+    if(!tempString.includes(",")){
         res.send({error: 'String does not contain \',\''})
         return;
     }
 
-    var strings = req.body.split(',');
+    var strings = tempString.split(',');
     if(strings.length != 2){
         res.send({error: 'String split did not return 2 parts'})
         return;
@@ -78,7 +80,7 @@ app.get('/api/getNames', (req, res) => {
 
 app.post('/api/getRadians', (req, res) => {
     console.log('Request to get degrees: ');
-    console.log(req.body);    
+    console.log(req.body);
 
     if(!req.body.degrees){
         res.send({error: '\'body.degrees\' was null'});
@@ -86,7 +88,7 @@ app.post('/api/getRadians', (req, res) => {
     }
 
     degrees = parseFloat(req.body.degrees);
-    
+
     if(degrees == NaN){
         res.send({error: 'Conversion failed'});
         return;
