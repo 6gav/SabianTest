@@ -5,9 +5,14 @@ class Home extends Component{
 
     }
 
+    componentDidMount(){
+        console.log(window.location);
+    }
+
     render(){
         return(
           <div>
+              <a href="/Server">Server Test Page</a>
               <h1>Home</h1>  
           </div>  
         );
